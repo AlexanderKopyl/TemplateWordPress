@@ -88,20 +88,28 @@ function html5blank_nav()
 }
 
 // Load HTML5 Blank scripts (header.php)
-function html5blank_header_scripts()
-{
+function html5blank_header_scripts() {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-
-    	wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
-        wp_enqueue_script('conditionizr'); // Enqueue it!
-
-        wp_register_script('modernizr', get_template_directory_uri() . '/js/lib/modernizr-2.7.1.min.js', array(), '2.7.1'); // Modernizr
-        wp_enqueue_script('modernizr'); // Enqueue it!
-
-        wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
-        wp_enqueue_script('html5blankscripts'); // Enqueue it!
+        wp_register_script('jq', get_template_directory_uri() . '/assets/js/jquery-3.0.0.min.js', array('jquery')); 
+        wp_enqueue_script('jq');    
+        wp_register_script('device', get_template_directory_uri() . '/assets/js/device.js', array('jquery'), ''); // Custom scripts
+        wp_enqueue_script('device');
+        wp_register_script('owl.carousel.min', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array('jquery'), ''); // Custom scripts
+        wp_enqueue_script('owl.carousel.min');
+        wp_register_script('jquery.magnific-popup.min', get_template_directory_uri() . '/assets//js/jquery.magnific-popup.min.js', array('jquery'), ''); // Custom scripts
+        wp_enqueue_script('jquery.magnific-popup.min');
+        wp_register_script('jquery.validate.min', get_template_directory_uri() . '/assets/js/jquery.fancybox.min.js', array('jquery'), ''); // Custom scripts
+        wp_enqueue_script('jquery.validate.min');
+       
+        wp_register_script('fancybox', get_template_directory_uri() . '/assets/js/jquery.fancybox.min.js', array('jquery'), ''); // Custom scripts
+        wp_enqueue_script('fancybox');
+        wp_register_script('validate', get_template_directory_uri() . '/assets/js/jquery.validate.min.js', array('jquery'), ''); // Custom scripts
+        wp_enqueue_script('validate');
+        wp_register_script('commonjs', get_template_directory_uri() . '/assets/js/common.js', array('jquery'), ''); // Custom scripts
+        wp_enqueue_script('commonjs');
     }
 }
+
 
 // Load HTML5 Blank conditional scripts
 function html5blank_conditional_scripts()
@@ -113,14 +121,25 @@ function html5blank_conditional_scripts()
 }
 
 // Load HTML5 Blank styles
-function html5blank_styles()
-{
-    wp_register_style('normalize', get_template_directory_uri() . '/normalize.css', array(), '1.0', 'all');
-    wp_enqueue_style('normalize'); // Enqueue it!
+function html5blank_styles() {
 
-    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-    wp_enqueue_style('html5blank'); // Enqueue it!
+    wp_register_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap-grid-3.3.1.min.css', array(), '1.0', 'all');
+    wp_enqueue_style('bootstrap'); 
+    wp_register_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', array(), '1.0', 'all');
+    wp_enqueue_style('magnific-popup'); 
+    wp_register_style('owl.carousel.min', get_template_directory_uri() . '/assets/css/owl.carousel.min.css', array(), '1.0', 'all');
+    wp_enqueue_style('owl.carousel.min');
+    wp_register_style('owl.theme.default.min', get_template_directory_uri() . '/assets/css/owl.theme.default.min.css', array(), '1.0', 'all');
+    wp_enqueue_style('owl.theme.default.min');
+    wp_register_style('jquery.fancybox.min', get_template_directory_uri() . '/assets/css/jquery.fancybox.min.css', array(), '1.0', 'all');
+    wp_enqueue_style('jquery.fancybox.min');
+    wp_register_style('fonts', get_template_directory_uri() . '/assets/css/fonts.css', array(), '1.0', 'all');
+    wp_enqueue_style('fonts'); 
+    wp_register_style('commonstyle', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0', 'all');
+    wp_enqueue_style('commonstyle'); 
+
 }
+
 
 // Register HTML5 Blank Navigation
 function register_html5_menu()
