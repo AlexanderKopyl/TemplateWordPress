@@ -468,4 +468,60 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
     return '<h2>' . $content . '</h2>';
 }
 
+function create_post_type_news() { //функция, с помощью которой создаем кастомные посты
+ register_post_type( 'news', // регистрируем наши посты под названием post_news
+  array(
+   'menu_position' => 5, //позиция в меню
+   'taxonomies' => array('Новости'), // категория этих кастомных постов.
+   'labels' => array( // это текст лэйблов, который будет выводиться в админке
+    'name' => __( 'Новости' ),
+    'singular_name' => __( 'Новости' )
+   ),
+  'public'      => true, // что посты доступны и их можно вывести на фронтенд
+  'has_archive' => true, // что у постов есть архив
+  'supports'    => array( 'title', 'editor','thumbnail') // что у постов есть заголовок, дескрипшн и картинка
+  )
+ );
+}
+ add_action( 'init', 'create_post_type_news' ); // инициализация постов
+
+function create_news_taxonomies() { // создаем категорию для наших постов
+ $labels = array( // замена текста в админке для категорий
+  'name'              => _('Новости'),
+  'singular_name'     => _('Новости'),
+  'search_items'      => __( 'Найти Новости categories' ),
+  'all_items'         => __( 'Все Новости categories' ),
+  'parent_item'       => __( ' Новости category' ),
+  'parent_item_colon' => __( ' Новости category:' ),
+  'edit_item'         => __( 'Добавить Новости category' ),
+  'update_item'       => __( 'Обновить Новости category' ),
+  'add_new_item'      => __( 'Добавить новую Новость категорию' ),
+  'new_item_name'     => __( 'Новое название Новости ' ),
+  'menu_name'         => __( 'Новости Категории' ),
+ );
+
+ $args = array(
+  'hierarchical'      => true, // разрешить вложенность категорий
+  'labels'            => $labels,
+  'show_ui'           => true, // показать внутреннее редактирование категории
+  'rewrite'           => array( 'slug' => 'news' ), // переписать ссылку категории слага-id
+ );
+ register_taxonomy( 'news', array( 'post_news' ), $args );
+}
+add_action( 'init', 'create_news_taxonomies', 0 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

@@ -13,16 +13,7 @@
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 
 		<?php wp_head(); ?>
-		<script>
-        // conditionizr.com
-        // configure environment tests
-        conditionizr.config({
-            assets: '<?php echo get_template_directory_uri(); ?>',
-            tests: {}
-        });
-        </script>
-
-	</head>
+		</head>
 	<body <?php body_class(); ?>>
 
 		<!-- wrapper -->
@@ -42,9 +33,17 @@
 
 					<!-- nav -->
 					<nav class="nav" role="navigation">
-						<?php html5blank_nav(); ?>
+						<?php 
+						// html5blank_nav(); 
+
+						?>
+						<!-- header-menu -->
+						<?php wp_nav_menu(array('menu' => 'header-menu')); ?>
+
+
+						<!-- footer-menu -->
 					</nav>
-					<!-- /nav -->
+					<!-- /nav --> 
 
 			</header>
 			<!-- /header -->

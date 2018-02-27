@@ -11,6 +11,7 @@
 			<!-- post title -->
 			<h1>
 				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+				<?php the_content(); ?>
 			</h1>
 			<!-- /post title -->
 			<span class="date"><?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?></span>
